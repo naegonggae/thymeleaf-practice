@@ -6,15 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-//@Entity
-//@Data
+@Entity
+@Data
 public class Board {
-    /*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String content;
 
-     */
 }
