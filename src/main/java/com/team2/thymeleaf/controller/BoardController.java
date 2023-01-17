@@ -14,16 +14,14 @@ import java.util.List;
 @RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
-/*
-    private final BoardRepository boardRepository;
+
+    //private final BoardRepository boardRepository;
 
     @GetMapping("/list")
     public String list(Model model) {
 
-        List<Board> boards = boardRepository.findAll();
-        model.addAttribute("boards", boards);
+        //List<Board> boards = boardRepository.findAll();
+        //model.addAttribute("boards", boards);
         return "/board/list";
     }
-
- */
 }
