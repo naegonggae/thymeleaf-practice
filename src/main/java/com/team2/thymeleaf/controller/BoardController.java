@@ -1,4 +1,5 @@
 package com.team2.thymeleaf.controller;
+import com.team2.thymeleaf.validator.BoardValidator;
 import jakarta.validation.Valid;
 
 import com.team2.thymeleaf.model.Board;
@@ -17,6 +18,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardRepository boardRepository;
+    private final BoardValidator boardValidator;
 
     @GetMapping("/list")
     public String list(Model model) {
@@ -38,6 +40,7 @@ public class BoardController {
 
     @PostMapping("/form")
     public String submit(@Valid Board board, BindingResult bindingResult) {
+        boardValidator.validate(board, bindingResult); // 내용검증
         if (bindingResult.hasErrors()) { // NotNull, Size 검증
             return "board/form";
         }
