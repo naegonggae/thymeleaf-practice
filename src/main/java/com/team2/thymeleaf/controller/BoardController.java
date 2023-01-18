@@ -1,10 +1,12 @@
 package com.team2.thymeleaf.controller;
+import jakarta.validation.Valid;
 
 import com.team2.thymeleaf.model.Board;
 import com.team2.thymeleaf.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +37,10 @@ public class BoardController {
     }
 
     @PostMapping("/form")
-    public String submit(@ModelAttribute Board board) {
+    public String submit(@Valid Board board, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) { // NotNull, Size 검증
+            return "board/form";
+        }
         boardRepository.save(board);
         return "redirect:/board/list";
     }
